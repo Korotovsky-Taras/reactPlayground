@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Card from './card';
-import './cardlist.css';
+import Card from './card.jsx';
+import './cardlist.scss';
 
 export default class extends Component {
 	constructor(props){
@@ -11,7 +11,7 @@ export default class extends Component {
 	}
 
 	componentWillMount(...ar){
-		console.log("componentWillMount", ar);
+		// console.log("componentWillMount", ar);
 	}
 
 	shouldComponentUpdate(...ar){

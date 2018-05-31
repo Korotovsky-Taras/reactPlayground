@@ -1,15 +1,22 @@
 .app-auth__form {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     max-width: 400px;
     margin-left: auto;
     margin-right: auto;
-    align-items: center;
-    justify-content: space-around;
+    flex: 1;
+    min-height: 0;
+    padding: 100px 0 20px;
+    box-sizing: border-box;
+    position: relative;
 }
 
 .app-auth__form-input {
     font-size: 30px;
     outline: none;
+    text-align: center;
     border-width: 0 0 1px 0;
 }
 
@@ -21,4 +28,5 @@
     background-color: tomato;
     text-decoration: none;
     color: #fff;
+    margin-top: 20px;
 }

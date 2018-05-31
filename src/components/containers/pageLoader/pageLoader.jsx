@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './pageLoader.css';
+import './pageLoader.scss';
 
 export default class extends Component {
 	render() {

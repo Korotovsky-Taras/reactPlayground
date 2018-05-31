@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import logoSrc from './logo.svg';
-import './header.css';
+import './header.scss';
 
 export default class extends Component {
 	render() {
 		return (
 			<div className="app-header">
 				<div className="app-container">
-					<a href="/">
+					<Link to="/">
 						<img className="app-header__logotype" src={logoSrc} alt=""/>
-					</a>
+					</Link>
 				</div>
 			</div>
 		);

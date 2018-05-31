@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import Header from '../../containers/header/header';
-import Footer from '../../containers/footer/footer';
-import CardList from '../../containers/cards/cardlist';
-import PageLoader from '../../containers/pageLoader/pageLoader';
-import './products.css';
+import React, { Component, Fragment } from 'react';
+import Header from '../../containers/header/header.jsx';
+import Footer from '../../containers/footer/footer.jsx';
+import CardList from '../../containers/cards/cardlist.jsx';
+import PageLoader from '../../containers/pageLoader/pageLoader.jsx';
+import './products.scss';
 
 export default class extends Component {
 	constructor(){
@@ -15,7 +15,6 @@ export default class extends Component {
 	}
 
 	componentDidMount(...ar){
-		console.log("componentDidMount", ar);
 		fetch('https://jsonplaceholder.typicode.com/posts')
 			.then(response => response.json())
 			.then(json => {
@@ -37,7 +36,7 @@ export default class extends Component {
 
 	render() {
 		return (
-			<React.Fragment>
+			<Fragment>
 				<Header/>
 				<div className="app-wrapper__inner">
 					<div className="app-container">
@@ -45,7 +44,7 @@ export default class extends Component {
 					</div>
 				</div>
 				<Footer/>
-			</React.Fragment>
+			</Fragment>
 		);
 	}
 

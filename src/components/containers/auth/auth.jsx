@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import './auth.css';
+import './auth.scss';
 
 export default class extends Component {
 	constructor(){
@@ -9,6 +9,11 @@ export default class extends Component {
 			empty: true
 		}
 	}
+
+	shouldComponentUpdate(nextProps, nextState) {
+		return this.state.empty !== nextState.empty;
+	}
+
 	render() {
 		return (
 			<div className="app-auth__form">
@@ -22,10 +27,10 @@ export default class extends Component {
 		if (!this.state.empty) {
 			return <Link className="app-auth__form-button" to={"/products"}>Поехали</Link>
 		}
-	}
+	};
 
-	onInput = () => {
-		let isEmpty = this.value === "";
+	onInput = (event) => {
+		let isEmpty = event.target.value.toString().trim() === "";
 		this.setState((prevState, curState) => {
 			return {
 				...prevState,

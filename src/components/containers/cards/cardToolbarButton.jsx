@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './cardToolbarButton.css';
+import './cardToolbarButton.scss';
 
 export default class extends Component {
 	render() {

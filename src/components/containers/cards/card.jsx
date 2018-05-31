@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
-import ToolbarButton from './cardToolbarButton';
-import { Link } from "react-router-dom";
-import './card.css';
+import ReactImageFallback from "react-image-fallback";
+import ToolbarButton from './cardToolbarButton.jsx';
+import emptySrc from './emptyRecord.svg';
+import './card.scss';
 
 export default class extends Component {
-	constructor(props){
-		super(props);
-	}
 	render() {
 		return (
 			<div onDoubleClick={this.doubleClickEvent} className="app-card">
-				<img className="app-card__image" src={this.getPropsData("image")} alt=""/>
+				<ReactImageFallback
+						src={this.getPropsData("image")}
+						fallbackImage={emptySrc}
+						initialImage={emptySrc}
+						alt="image"
+						className="app-card__image" />
 				<div className="app-card__title">{this.getPropsData("title")}</div>
 				<div className="app-card__subtitle">{this.getPropsData("body")}</div>
 				<ToolbarButton
@@ -27,18 +30,17 @@ export default class extends Component {
 		);
 	}
 
-
 	shouldComponentUpdate(nextProps, nextState) {
 		return nextProps.liked !== this.props.liked;
 	}
 
 	componentDidUpdate(){
-		console.log(1);
+		console.log("Card " + this.props.index + " is update");
 	}
 
 	doubleClickEvent = (event) => {
-		this.props.onDoubleClick(this.props.id);
-	}
+		this.props.onDoubleClick(this.props.index);
+	};
 
 	getLikeButtonText = () => this.getPropsData("liked") ? "Liked: " + this.getPropsData("likeCount") : "Like this!";
 

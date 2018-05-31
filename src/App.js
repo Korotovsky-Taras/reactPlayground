@@ -1,25 +1,22 @@
 import React, {Component} from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Home from './components/pages/home/home';
-import Products from './components/pages/products/products';
-import './App.css';
+import Home from './components/pages/home/home.jsx';
+import ProductPage from './components/pages/products/productPage.jsx';
+import ProductItemPage from './components/pages/products/productItemPage.jsx';
 
 class App extends Component {
-	constructor(){
-		super();
-	}
 	render() {
 		return (
 			<Router>
 				<div className="app-wrapper">
 					<Route exact path="/" component={Home} />
 					<Route path="/products" render={({history}) => {
-						return <Products onCardDoubleClick={(id) => {
+						return <ProductPage onCardDoubleClick={(id, likeCount, liked) => {
 							history.push("/product/" + id);
 						}}/>
 					}} />
 
-					{/*<Route path="/products/:id" component={Product} />*/}
+					<Route path="/product/:id" component={ProductItemPage} />
 				</div>
 			</Router>
 		);
