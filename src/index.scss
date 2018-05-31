@@ -36,11 +36,18 @@ body {
     margin-left: auto;
     margin-right: auto;
     padding: 0 20px;
+    box-sizing: border-box;
     width: 100%;
 }
 
 @media screen and (min-width: 620px){
     .app-container {
         max-width: 800px;
+    }
+}
+
+@media screen and (min-width: 1200px){
+    .app-container {
+        max-width: 1200px;
     }
 }
