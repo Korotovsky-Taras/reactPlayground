@@ -1,0 +1,24 @@
+.app-auth__form {
+    display: flex;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.app-auth__form-input {
+    font-size: 30px;
+    outline: none;
+    border-width: 0 0 1px 0;
+}
+
+.app-auth__form-button {
+    font-size: 16px;
+    padding: 6px 12px;
+    outline: none;
+    border-width: 1px;
+    background-color: tomato;
+    text-decoration: none;
+    color: #fff;
+}

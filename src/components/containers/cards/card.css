@@ -1,0 +1,41 @@
+.app-card {
+    padding: 20px 20px 50px;
+    box-sizing: border-box;
+    text-align: left;
+    background: #fff;
+    box-shadow:  0 0 4px rgba(0,0,0,0.2);
+    position: relative;
+}
+
+.app-card__image {
+    max-width: 100%;
+    width: 100%;
+}
+
+.app-card__title {
+    padding-top: 20px;
+    font: bold 18px/22px Arial, sans-serif;
+}
+
+.app-card__subtitle {
+    padding-top: 20px;
+    font: 13px/20px Arial, sans-serif;
+}
+
+.app-card__like-button.liked {
+    cursor: default;
+    opacity: 0.5;
+}
+
+.app-card__like-button {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+
+.app-card__delete-button {
+    position: absolute;
+    background: rgba(0,0,0,0.2);
+    bottom: 20px;
+    right: 20px;
+}

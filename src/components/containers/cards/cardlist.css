@@ -1,0 +1,17 @@
+.app-card-list {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: 1fr;
+}
+
+@media screen and (min-width: 620px){
+    .app-card-list {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (min-width: 1200px){
+    .app-card-list {
+        grid-template-columns: 1fr 1fr  1fr;
+    }
+}
