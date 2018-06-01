@@ -25,7 +25,6 @@ export default class extends Component {
 						onClickHandler={this.deleteButtonHandler}
 						className="app-card__delete-button">
 					Delete
-
 				</ToolbarButton>
 			</div>
 		);
