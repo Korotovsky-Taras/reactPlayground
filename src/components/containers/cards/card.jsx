@@ -9,13 +9,13 @@ export default class extends Component {
 		return (
 			<div onDoubleClick={this.doubleClickEvent} className="app-card">
 				<ReactImageFallback
-						src={this.getPropsData("image")}
+						src={this.props.image}
 						fallbackImage={emptySrc}
 						initialImage={emptySrc}
 						alt="image"
 						className="app-card__image" />
-				<div className="app-card__title">{this.getPropsData("title")}</div>
-				<div className="app-card__subtitle">{this.getPropsData("body")}</div>
+				<div className="app-card__title">{this.props.title}</div>
+				<div className="app-card__subtitle">{this.props.body}</div>
 				<ToolbarButton
 						onClickHandler={this.likeButtonHandler}
 					    className="app-card__like-button">
@@ -38,25 +38,18 @@ export default class extends Component {
 		console.log("Card " + this.props.index + " is update");
 	}
 
-	doubleClickEvent = (event) => {
-		this.props.onDoubleClick(this.props.index);
+	getLikeButtonText = () => this.props.liked ? "Liked: " + this.props.likeCount : "Like this!";
+
+	likeButtonHandler = (e) => {
+		if(this.props.liked) return;
+		this.props.onLikeCard(this.props);
 	};
 
-	getLikeButtonText = () => this.getPropsData("liked") ? "Liked: " + this.getPropsData("likeCount") : "Like this!";
-
-	likeButtonHandler = (event) => {
-		if(this.getPropsData("liked")) return;
-		this.props.onLiked.call(this, this.props.index, this.getPropsData("likeCount") + 1);
+	deleteButtonHandler = (e) => {
+		this.props.onRemoveCard(this.props)
 	};
 
-	deleteButtonHandler = (event) => {
-		this.props.onRemove(this.props.index)
+	doubleClickEvent = (e) => {
 	};
 
-	getPropsData(prop) {
-		if(this.props.hasOwnProperty(prop)){
-			return this.props[prop];
-		}
-		return "";
-	}
 }

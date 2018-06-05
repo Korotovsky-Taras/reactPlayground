@@ -18,20 +18,20 @@ export default class extends Component {
 		const {params} = this.props.match;
 
 		//TODO теряем данные, надо что бы все параметры кроме id приходили с базы а не дополнялись прокидыванием (liked, likedCount, image)
-		fetch('https://jsonplaceholder.typicode.com/posts/' + params.id)
-			.then(response => response.json())
-			.then(json => {
-				this.setState((prevState, props) => {
-					return {
-						...prevState,
-						pageLoading: false,
-						data: {
-							...json,
-							image: "https://picsum.photos/200/200/?image=" + params.id,
-						}
-					};
-				})
-			});
+		// fetch('https://jsonplaceholder.typicode.com/posts/' + params.id)
+		// 	.then(response => response.json())
+		// 	.then(json => {
+		// 		this.setState((prevState, props) => {
+		// 			return {
+		// 				...prevState,
+		// 				pageLoading: false,
+		// 				data: {
+		// 					...json,
+		// 					image: "https://picsum.photos/200/200/?image=" + params.id,
+		// 				}
+		// 			};
+		// 		})
+		// 	});
 	}
 
 	componentDidUpdate(){

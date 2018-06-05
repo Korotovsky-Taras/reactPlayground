@@ -1,13 +1,30 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { onLikeCard, onDoubleClickCard, onRemoveCard } from '../../../actions/index';
 import Card from './card.jsx';
 import './cardlist.scss';
 
-export default class extends Component {
-	constructor(props){
-		super(props);
-		this.state = {
-			data: props.data
-		}
+class CardList extends Component {
+
+	render() {
+		return (
+			<div className="app-card-list">
+				{this.props.cards.map(({id, image, title, body, liked, likeCount}) => {
+					return <Card key={id}
+								 id={id}
+								 image={image}
+								 title={title}
+								 body={body}
+								 liked={liked}
+								 likeCount={likeCount}
+								 onRemoveCard={this.props.onRemoveCard}
+								 // onDoubleClick={this.props.onDoubleClickCard}
+								 onLikeCard={this.props.onLikeCard}
+					/>;
+				})}
+			</div>
+		);
 	}
 
 	componentWillMount(...ar){
@@ -30,49 +47,20 @@ export default class extends Component {
 	componentWillReceiveProps(...ar){
 		// console.log("componentWillReceiveProps", ar);
 	}
+}
 
-	render() {
-		return (
-			<div className="app-card-list">
-				{this.state.data.map((itemData) => {
-					return <Card key={itemData.id}
-								 image={itemData.image}
-								 title={itemData.title}
-								 body={itemData.body}
-								 liked={itemData.liked}
-								 likeCount={itemData.likeCount}
-								 index={itemData.id}
-								 onRemove={this.onRemove}
-								 onDoubleClick={itemData.onDoubleClick}
-								 onLiked={this.onLiked} />;
-				})}
-			</div>
-		);
-	}
-
-	onRemove = (index) => {
-		this.setState((prevState, props) => {
-			return {
-				...prevState,
-				data: prevState.data.filter(el => {
-					return el.id !== index;
-				})
-			};
-		})
-	};
-
-	onLiked = (index, count) => {
-		this.setState((prevState, props) => {
-			return {
-				...prevState,
-				data: prevState.data.map((el) => {
-					if(!el.liked && el.id === index) {
-						el.likeCount = count;
-						el.liked = true;
-					}
-					return el;
-				})
-			};
-		})
+function mapStateToProps (state) {
+	return {
+		cards: state.cards
 	}
 }
+
+function matchDispatchToProps (dispatch) {
+	return bindActionCreators({
+		onLikeCard: onLikeCard,
+		// onDoubleClickCard: onDoubleClickCard,
+		onRemoveCard: onRemoveCard
+	}, dispatch)
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(CardList);

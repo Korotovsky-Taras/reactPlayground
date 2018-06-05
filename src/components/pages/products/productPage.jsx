@@ -9,29 +9,28 @@ export default class extends Component {
 	constructor(){
 		super();
 		this.state = {
-			data: [],
 			pageLoading: true
 		}
 	}
 
 	componentDidMount(...ar){
-		fetch('https://jsonplaceholder.typicode.com/posts')
-			.then(response => response.json())
-			.then(json => {
-				this.setState((prevState, props) => {
-					return {
-						...prevState,
-						pageLoading: false,
-						data: json.map(el => {
-							el.liked = false;
-							el.likeCount = 0;
-							el.image = "https://picsum.photos/200/200/?image=" + el.id;
-							el.onDoubleClick = this.props.onCardDoubleClick;
-							return el;
-						})
-					};
-				})
-			})
+		// fetch('https://jsonplaceholder.typicode.com/posts')
+		// 	.then(response => response.json())
+		// 	.then(json => {
+		// 		this.setState((prevState, props) => {
+		// 			return {
+		// 				...prevState,
+		// 				pageLoading: false,
+		// 				data: json.map(el => {
+		// 					el.liked = false;
+		// 					el.likeCount = 0;
+		// 					el.image = "https://picsum.photos/200/200/?image=" + el.id;
+		// 					el.onDoubleClick = this.props.onCardDoubleClick;
+		// 					return el;
+		// 				})
+		// 			};
+		// 		})
+		// 	})
 	}
 
 	render() {
@@ -40,7 +39,7 @@ export default class extends Component {
 				<Header/>
 				<div className="app-wrapper__inner">
 					<div className="app-container">
-						{this.cardListPageRender()}
+						<CardList />
 					</div>
 				</div>
 				<Footer/>
