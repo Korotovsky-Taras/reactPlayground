@@ -5,15 +5,16 @@ export default class extends Component {
 	render() {
 		return (
 			<div className="app-page-loader">
-				<span>З</span>
-				<span>а</span>
-				<span>г</span>
-				<span>р</span>
-				<span>у</span>
-				<span>з</span>
-				<span>к</span>
-				<span>а</span>
+				{this.renderText()}
 			</div>
 		);
+	}
+	renderText = () => {
+		let text = this.props.children;
+		let data = [];
+		for(let key in text){
+			data.push(<span>{text.charAt(key)}</span>)
+		}
+		return data;
 	}
 }

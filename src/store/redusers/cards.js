@@ -814,9 +814,6 @@ export default function (state = initialCards, action) {
 		case "CARD_REMOVE":
 			return state.filter(el => el.id !== action.payload.id);
 			break;
-		case "CARD_DBLCLICK":
-			return state;
-			break;
 		default:
 			return state;
 	}

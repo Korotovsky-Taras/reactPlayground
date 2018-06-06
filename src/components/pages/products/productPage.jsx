@@ -8,29 +8,9 @@ import './products.scss';
 export default class extends Component {
 	constructor(){
 		super();
-		this.state = {
-			pageLoading: true
-		}
 	}
 
 	componentDidMount(...ar){
-		// fetch('https://jsonplaceholder.typicode.com/posts')
-		// 	.then(response => response.json())
-		// 	.then(json => {
-		// 		this.setState((prevState, props) => {
-		// 			return {
-		// 				...prevState,
-		// 				pageLoading: false,
-		// 				data: json.map(el => {
-		// 					el.liked = false;
-		// 					el.likeCount = 0;
-		// 					el.image = "https://picsum.photos/200/200/?image=" + el.id;
-		// 					el.onDoubleClick = this.props.onCardDoubleClick;
-		// 					return el;
-		// 				})
-		// 			};
-		// 		})
-		// 	})
 	}
 
 	render() {
@@ -48,8 +28,8 @@ export default class extends Component {
 	}
 
 	cardListPageRender = () => {
-		if (this.state.pageLoading) return <PageLoader />;
-		return <CardList data={this.state.data} />;
+		if (this.props.pageLoading) return <PageLoader />;
+		return <CardList data={this.props.data} />;
 	}
 
 }

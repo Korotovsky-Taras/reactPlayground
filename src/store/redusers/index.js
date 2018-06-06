@@ -1,8 +1,8 @@
 import {combineReducers} from "redux";
-import CardsRedusers from "./card"
+import CardsRedusers from "./cards"
 
 const allRedusers = combineReducers({
-	cards: CardsRedusers,
+	cards: CardsRedusers
 });
 
 export default allRedusers;
