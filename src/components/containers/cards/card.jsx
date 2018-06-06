@@ -50,7 +50,7 @@ export default class extends Component {
 	};
 
 	doubleClickHandler = (e) => {
-		this.props.onDoubleClickCardEvent(this.props)
+		this.props.onDoubleClickCardEvent(this.props.id)
 	};
 
 }

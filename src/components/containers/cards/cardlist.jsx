@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
-import { onCardLike, onCardRemove, onCardDoubleClick } from '../../../store/actions/index';
+import { onCardLike, onCardRemove } from '../../../store/actions/index';
 import Card from './card.jsx';
 import './cardlist.scss';
 
@@ -20,12 +20,17 @@ class CardList extends Component {
 								 liked={liked}
 								 likeCount={likeCount}
 								 onRemoveCardEvent={this.props.onCardRemove}
-								 onDoubleClickCardEvent={this.props.onCardDoubleClick}
+								 onDoubleClickCardEvent={this.onCardDoubleClick}
 								 onLikeCardEvent={this.props.onCardLike}
 					/>;
 				})}
 			</div>
 		);
+	}
+
+	onCardDoubleClick = (id) => {
+		const { history } = this.props;
+		history.push("/product/" + id);
 	}
 
 	componentWillMount(...ar){
@@ -60,8 +65,7 @@ function mapStateToProps (state) {
 function matchDispatchToProps (dispatch) {
 	return bindActionCreators({
 		onCardLike: onCardLike,
-		onCardRemove: onCardRemove,
-		onCardDoubleClick: onCardDoubleClick.bind(this, this.props)
+		onCardRemove: onCardRemove
 	}, dispatch)
 }
 

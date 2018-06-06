@@ -15,8 +15,3 @@ export const onCardRemove = card =>  {
 		payload: card
 	}
 };
-
-export const onCardDoubleClick = (card, props) =>  {
-	console.log(props);
-	// props.match.history.push("/product" + card.id);
-};
