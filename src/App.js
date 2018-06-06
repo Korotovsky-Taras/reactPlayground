@@ -11,9 +11,11 @@ import Home from './components/pages/home/home.jsx';
 import ProductPage from './components/pages/products/productPage.jsx';
 import ProductItemPage from './components/pages/products/productItemPage.jsx';
 
-import allRedusers from './redusers/index.js';
+import allRedusers from './store/redusers/index.js';
 
-const store = createStore(allRedusers);
+const store = createStore(
+		allRedusers,
+		window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 class App extends Component {
 	render() {

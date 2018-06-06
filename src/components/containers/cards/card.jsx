@@ -7,7 +7,7 @@ import './card.scss';
 export default class extends Component {
 	render() {
 		return (
-			<div onDoubleClick={this.doubleClickEvent} className="app-card">
+			<div onDoubleClick={this.doubleClickHandler} className="app-card">
 				<ReactImageFallback
 						src={this.props.image}
 						fallbackImage={emptySrc}
@@ -42,14 +42,15 @@ export default class extends Component {
 
 	likeButtonHandler = (e) => {
 		if(this.props.liked) return;
-		this.props.onLikeCard(this.props);
+		this.props.onLikeCardEvent(this.props);
 	};
 
 	deleteButtonHandler = (e) => {
-		this.props.onRemoveCard(this.props)
+		this.props.onRemoveCardEvent(this.props)
 	};
 
-	doubleClickEvent = (e) => {
+	doubleClickHandler = (e) => {
+		this.props.onDoubleClickCardEvent(this.props)
 	};
 
 }

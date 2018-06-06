@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { onLikeCard, onDoubleClickCard, onRemoveCard } from '../../../actions/index';
+import { withRouter } from 'react-router-dom'
+import { onCardLike, onCardRemove, onCardDoubleClick } from '../../../store/actions/index';
 import Card from './card.jsx';
 import './cardlist.scss';
 
@@ -18,9 +19,9 @@ class CardList extends Component {
 								 body={body}
 								 liked={liked}
 								 likeCount={likeCount}
-								 onRemoveCard={this.props.onRemoveCard}
-								 // onDoubleClick={this.props.onDoubleClickCard}
-								 onLikeCard={this.props.onLikeCard}
+								 onRemoveCardEvent={this.props.onCardRemove}
+								 onDoubleClickCardEvent={this.props.onCardDoubleClick}
+								 onLikeCardEvent={this.props.onCardLike}
 					/>;
 				})}
 			</div>
@@ -29,6 +30,7 @@ class CardList extends Component {
 
 	componentWillMount(...ar){
 		// console.log("componentWillMount", ar);
+		console.log(this)
 	}
 
 	shouldComponentUpdate(...ar){
@@ -57,10 +59,10 @@ function mapStateToProps (state) {
 
 function matchDispatchToProps (dispatch) {
 	return bindActionCreators({
-		onLikeCard: onLikeCard,
-		// onDoubleClickCard: onDoubleClickCard,
-		onRemoveCard: onRemoveCard
+		onCardLike: onCardLike,
+		onCardRemove: onCardRemove,
+		onCardDoubleClick: onCardDoubleClick.bind(this, this.props)
 	}, dispatch)
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(CardList);
+export default withRouter(connect(mapStateToProps, matchDispatchToProps)(CardList));
